@@ -1,0 +1,3 @@
+# Ignore all backup and swap files
+backup/
+tmp/

@@ -2,6 +2,7 @@
 nitrogen --restore &
 xcompmgr &
 tint2 &
+conky &
 wicd-gtk &
 pnmixer &
 pidgin &

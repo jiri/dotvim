@@ -61,7 +61,7 @@
 
 " Powerline {
   set laststatus=2
-  let Powerline_symbols="compatible"
+  let Powerline_symbols="fancy"
 " }
 
 " Command-T {

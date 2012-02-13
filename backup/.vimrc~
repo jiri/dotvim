@@ -5,8 +5,12 @@
   let mapleader=","
 " }
 
+" Pathogen {
+  call pathogen#infect()
+  call pathogen#helptags()
+" }
+
 " General {
-  filetype plugin indent on
   set backspace=indent,eol,start
   set backup
   set backupdir=~/.vim/backup
@@ -14,11 +18,12 @@
   set fileformats=unix,dos,mac
   set iskeyword+=_,$,%,@,#
   set noerrorbells
-  colorscheme wombat
+  set autoread
 " }
 
 " Formatting {
   syntax on
+  filetype plugin indent on
   set smartindent
   set shiftwidth=2
   set softtabstop=2
@@ -44,12 +49,11 @@
     set guioptions=ce
   endif
   " }
-    
-" }
-
-" Pathogen {
-  call pathogen#infect()
-  call pathogen#helptags()
+  
+  "set background=dark
+  "colorscheme solarized
+  
+  colorscheme wombat
 " }
 
 " NERDTree {
@@ -65,8 +69,10 @@
 
 " Command-T {
   noremap <leader>o <Esc>:CommandT<CR>
+  let g:CommandTMatchWindowAtTop = 1
   let g:CommandTAcceptSelectionMap = '<C-t>'
   let g:CommandTAcceptSelectionTabMap = '<CR>'
+  let g:CommandTScanDotDirectories = 1  
 " }
 
 " Miscellaneous mappings {

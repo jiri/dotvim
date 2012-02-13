@@ -11,7 +11,6 @@
 " }
 
 " General {
-  filetype plugin indent on
   set backspace=indent,eol,start
   set backup
   set backupdir=~/.vim/backup
@@ -19,10 +18,12 @@
   set fileformats=unix,dos,mac
   set iskeyword+=_,$,%,@,#
   set noerrorbells
+  set autoread
 " }
 
 " Formatting {
   syntax on
+  filetype plugin indent on
   set smartindent
   set shiftwidth=2
   set softtabstop=2
@@ -49,8 +50,10 @@
   endif
   " }
   
-  set background=dark
-  colorscheme solarized
+  "set background=dark
+  "colorscheme solarized
+  
+  colorscheme wombat
 " }
 
 " NERDTree {
@@ -66,6 +69,7 @@
 
 " Command-T {
   noremap <leader>o <Esc>:CommandT<CR>
+  let g:CommandTScanDotDirectories = 1  
   let g:CommandTMatchWindowAtTop = 1
   let g:CommandTAcceptSelectionMap = '<C-t>'
   let g:CommandTAcceptSelectionTabMap = '<CR>'
