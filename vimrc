@@ -75,6 +75,19 @@
   let g:CommandTAcceptSelectionTabMap = '<CR>'
 " }
 
+" Vala {
+  autocmd BufRead *.vala,*.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+  au BufRead,BufNewFile *.vala,*.vapi setfiletype vala
+  
+  " Enable comment strings
+  let vala_comment_strings = 1
+
+  " Highlight space errors
+  "let vala_space_errors = 1
+  " Disable space-tab-space errors
+  "let vala_no_tab_space_error = 1
+" }
+
 " Miscellaneous mappings {
   nnoremap ; :
   cmap w!! w !sudo tee % >/dev/null
