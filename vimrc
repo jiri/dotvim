@@ -1,13 +1,19 @@
 " Basics {
   set nocompatible
   set encoding=utf-8
-  set guifont="Droid Sans Mono 10"
-  let mapleader=","
+  set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 13
+  let mapleader="'"
 " }
 
 " Pathogen {
   call pathogen#infect()
   call pathogen#helptags()
+" }
+
+" Clojure {
+  filetype off
+  call pathogen#runtime_append_all_bundles()
+  let vimclojure#WantNailgun = 1
 " }
 
 " General {
@@ -22,13 +28,15 @@
 " }
 
 " Formatting {
-  syntax on
   filetype plugin indent on
+  syntax on
   set smartindent
   set shiftwidth=2
   set softtabstop=2
   set tabstop=8
   set nowrap
+  let g:vimclojure#HighlightBuiltins = 1
+  let g:vimclojure#ParenRainbow = 1
 " }
 
 " Search {
@@ -43,17 +51,14 @@
   set scrolloff=5
   set showcmd
   set showmatch
+  
+  colorscheme wombat
 
   " GUI {
   if has("gui_running")
     set guioptions=ce
   endif
   " }
-  
-  "set background=dark
-  "colorscheme solarized
-  
-  colorscheme wombat
 " }
 
 " NERDTree {
@@ -64,31 +69,27 @@
 
 " Powerline {
   set laststatus=2
-  let Powerline_symbols="compatible"
+  let Powerline_symbols="fancy"
 " }
 
 " Command-T {
   noremap <leader>o <Esc>:CommandT<CR>
+  noremap ` <Esc>:CommandT<CR>
   let g:CommandTScanDotDirectories = 1  
   let g:CommandTMatchWindowAtTop = 1
   let g:CommandTAcceptSelectionMap = '<C-t>'
   let g:CommandTAcceptSelectionTabMap = '<CR>'
 " }
 
-" Vala {
-  autocmd BufRead *.vala,*.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-  au BufRead,BufNewFile *.vala,*.vapi setfiletype vala
-  
-  " Enable comment strings
-  let vala_comment_strings = 1
-
-  " Highlight space errors
-  "let vala_space_errors = 1
-  " Disable space-tab-space errors
-  "let vala_no_tab_space_error = 1
+" Parentheses surround {
+  "inoremap ( ()<ESC>i
+  "inoremap [ []<ESC>i
+  "inoremap { {}<ESC>i
 " }
 
 " Miscellaneous mappings {
+  map <ALT> zf  
+
   nnoremap ; :
   cmap w!! w !sudo tee % >/dev/null
 " }
