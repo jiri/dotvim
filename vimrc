@@ -2,18 +2,34 @@
   set nocompatible
   set encoding=utf-8
   set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 13
-  let mapleader="'"
+  let mapleader=","
 " }
 
-" Pathogen {
-  call pathogen#infect()
-  call pathogen#helptags()
+" Vundle {
+  set rtp+=~/.vim/bundle/vundle
+  call vundle#rc()
 " }
 
-" Clojure {
-  filetype off
-  call pathogen#runtime_append_all_bundles()
-  let vimclojure#WantNailgun = 1
+" Bundled plugins {
+  Bundle 'gmarik/vundle'
+  Bundle 'L9'
+
+  Bundle 'AndrewRadev/splitjoin.vim' 
+  Bundle 'tpope/vim-endwise'
+  Bundle 'tpope/vim-speeddating'
+  Bundle 'scrooloose/nerdtree'
+  Bundle 'Lokaltog/vim-powerline'
+
+  Bundle 'FuzzyFinder'
+  Bundle 'repeat.vim'
+  Bundle 'surround.vim'
+  Bundle 'tComment'
+" }
+
+" Bundles to check out later {
+  " Bundle 'Lokaltog/vim-easymotion'
+  " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+  " Bundle 'Align'
 " }
 
 " General {
@@ -35,8 +51,6 @@
   set softtabstop=2
   set tabstop=8
   set nowrap
-  let g:vimclojure#HighlightBuiltins = 1
-  let g:vimclojure#ParenRainbow = 1
 " }
 
 " Search {
@@ -81,15 +95,7 @@
   let g:CommandTAcceptSelectionTabMap = '<CR>'
 " }
 
-" Parentheses surround {
-  "inoremap ( ()<ESC>i
-  "inoremap [ []<ESC>i
-  "inoremap { {}<ESC>i
-" }
-
 " Miscellaneous mappings {
-  map <ALT> zf  
-
   nnoremap ; :
   cmap w!! w !sudo tee % >/dev/null
 " }
