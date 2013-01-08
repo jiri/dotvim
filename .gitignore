@@ -2,3 +2,7 @@
 .*
 backup
 tmp
+
+# Ignore all the bundled plugins
+bundle/*
+!bundle/vundle
