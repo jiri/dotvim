@@ -1,8 +1,8 @@
 # Ignore all backup and swap files
 .*
-backup
-tmp
+backup/
+tmp/
 
 # Ignore all the bundled plugins
-bundle/*
-!bundle/vundle
+bundle/*/
+!bundle/vundle/

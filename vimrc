@@ -31,11 +31,11 @@
   Bundle 'tComment'
   Bundle 'git://git.wincent.com/command-t.git'
   Bundle 'Align'
-" }
 
-" Bundles to check out later {
-  " Bundle 'Lokaltog/vim-easymotion'
-  " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+  " Bundles to check out later {
+    " Bundle 'Lokaltog/vim-easymotion'
+    " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+  " }
 " }
 
 " General {
@@ -60,7 +60,7 @@
     set ts=2 sts=2 sw=2 expandtab
 
     autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab
-    autocmd FileType css setlocal ts=4 sts=4 sw=4 expandtab
+    autocmd FileType css  setlocal ts=4 sts=4 sw=4 expandtab
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   " }
 " }
@@ -89,39 +89,41 @@
   " }
 " }
 
-" NERDTree {
-  let NERDTreeDirArrows=1
-  let NERDTreeWinPos="right"
-  map <leader>f :NERDTreeToggle<CR>
-" }
+" Plugin specific settings {
+  " NERDTree {
+    let NERDTreeDirArrows=1
+    let NERDTreeWinPos="right"
+    map <leader>f :NERDTreeToggle<CR>
+  " }
 
-" Powerline {
-  set laststatus=2
-  let Powerline_symbols="fancy"
-  let Powerline_colorscheme="solarized16"
-" }
+  " Powerline {
+    set laststatus=2
+    let Powerline_symbols="fancy"
+    let Powerline_colorscheme="solarized16"
+  " }
 
-" Gundo {
-  let g:gundo_width=25
-  let g:gundo_bottom=1
-  let g:gundo_preview_height=12
-  let g:gundo_right=0
-  let g:gundo_help=0
-  let g:gundo_close_on_revert=1
+  " Gundo {
+    let g:gundo_width=25
+    let g:gundo_bottom=1
+    let g:gundo_preview_height=12
+    let g:gundo_right=0
+    let g:gundo_help=0
+    let g:gundo_close_on_revert=1
 
-  nmap <leader>u :GundoToggle<CR>
-" }
+    nmap <leader>u :GundoToggle<CR>
+  " }
 
-" Command-T {
-  let g:CommandTMinHeight=4
-  let g:CommandTMaxHeight=12
-  let g:CommandTMatchWindowAtTop=1
+  " Command-T {
+    let g:CommandTMinHeight=4
+    let g:CommandTMaxHeight=12
+    let g:CommandTMatchWindowAtTop=1
 
-  let g:CommandTAcceptSelectionMap="<CR>"
-  let g:CommandTAcceptSelectionSplitMap="<C-h>"
-  let g:CommandTAcceptSelectionVSplitMap="<C-v>"
+    let g:CommandTAcceptSelectionMap="<CR>"
+    let g:CommandTAcceptSelectionSplitMap="<C-h>"
+    let g:CommandTAcceptSelectionVSplitMap="<C-v>"
 
-  set wildignore+=*.o,*.obj,*~,.git,.svn,.hg
+    set wildignore+=*.o,*.obj,*~,.git,.svn,.hg
+  " }
 " }
 
 " Keymappings {
