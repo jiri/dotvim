@@ -27,4 +27,4 @@ present in the repo, for ease of installation on new machines.
 The should be installed automatically with the `:BundleInstall`
 command.
 
-For more info on Vundle, check out [https://github.com/gmarik/vundle][].
+For more info on Vundle, check out https://github.com/gmarik/vundle.
