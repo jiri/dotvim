@@ -31,6 +31,7 @@
   Bundle 'tComment'
   Bundle 'git://git.wincent.com/command-t.git'
   Bundle 'Align'
+  Bundle 'xoria256.vim'
 
   " Bundles to check out later {
     " Bundle 'Lokaltog/vim-easymotion'
