@@ -1,8 +1,7 @@
 " Basics {
   set nocompatible
   set encoding=utf-8
-  set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 13
-  let mapleader="'"
+  set guifont=Mensch:h16
 " }
 
 " Vundle {
@@ -11,32 +10,28 @@
 " }
 
 " Bundled plugins {
-  Bundle 'gmarik/vundle'
   Bundle 'L9'
-  Bundle 'AndrewRadev/splitjoin.vim' 
+  Bundle 'gmarik/vundle'
   Bundle 'tpope/vim-endwise'
   Bundle 'tpope/vim-speeddating'
   Bundle 'tpope/vim-unimpaired'
   Bundle 'tpope/vim-fugitive'
-  Bundle 'scrooloose/nerdtree'
+  Bundle 'tpope/vim-markdown'
   Bundle 'Lokaltog/vim-powerline'
-  Bundle 'stephenmckinney/vim-solarized-powerline'
+  Bundle 'Lokaltog/vim-easymotion'
   Bundle 'mattn/webapi-vim'
   Bundle 'mattn/gist-vim'
   Bundle 'altercation/vim-colors-solarized'
-  Bundle 'godlygeek/tabular'
-  Bundle 'sjl/gundo.vim'
-  Bundle 'repeat.vim'
+  Bundle 'stephenmckinney/vim-solarized-powerline'
   Bundle 'surround.vim'
+  Bundle 'msanders/snipmate.vim'
   Bundle 'tComment'
-  Bundle 'git://git.wincent.com/command-t.git'
   Bundle 'Align'
-  Bundle 'xoria256.vim'
-
-  " Bundles to check out later {
-    " Bundle 'Lokaltog/vim-easymotion'
-    " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-  " }
+  Bundle 'dart-lang/dart-vim-plugin'
+  Bundle 'VisIncr'
+  " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+  Bundle 'matchit.zip'
+  Bundle 'kien/ctrlp.vim'
 " }
 
 " General {
@@ -69,7 +64,7 @@
 " Search {
   set incsearch
   set smartcase
-  set nohlsearch
+  set hlsearch
 " }
 
 " UI {
@@ -91,64 +86,56 @@
 " }
 
 " Plugin specific settings {
-  " NERDTree {
-    let NERDTreeDirArrows=1
-    let NERDTreeWinPos="right"
-    map <leader>f :NERDTreeToggle<CR>
-  " }
-
   " Powerline {
     set laststatus=2
     let Powerline_symbols="fancy"
     let Powerline_colorscheme="solarized16"
   " }
-
-  " Gundo {
-    let g:gundo_width=25
-    let g:gundo_bottom=1
-    let g:gundo_preview_height=12
-    let g:gundo_right=0
-    let g:gundo_help=0
-    let g:gundo_close_on_revert=1
-
-    nmap <leader>u :GundoToggle<CR>
-  " }
-
-  " Command-T {
-    let g:CommandTMinHeight=4
-    let g:CommandTMaxHeight=12
-    let g:CommandTMatchWindowAtTop=1
-
-    let g:CommandTAcceptSelectionMap="<CR>"
-    let g:CommandTAcceptSelectionSplitMap="<C-h>"
-    let g:CommandTAcceptSelectionVSplitMap="<C-v>"
-
-    set wildignore+=*.o,*.obj,*~,.git,.svn,.hg
+  
+  " Sparkup {
+    " let g:sparkupExecuteMapping="<leader>e"
   " }
 " }
 
 " Keymappings {
+  let mapleader=" "
+
+  nnoremap Q <nop>
+
   nnoremap ; :
   vnoremap ; :
- 
-  map <leader>c :TComment<CR>
-  nnoremap 'w <C-W>
-  
-  vnoremap < <gv
-  vnoremap > >gv
 
-  " Line Bubbling {
+  nnoremap <leader>; q:
+  vnoremap <leader>; q:
+
+  nnoremap <leader>c :TComment<CR>
+  vnoremap <leader>c :TComment<CR>
+  nnoremap <leader>w :w<CR>
+
+  nnoremap <leader>p :CtrlP<CR>
+  nnoremap <leader>b :CtrlPBuffer<CR>
+  
+  nnoremap <silent> <Leader>/ :nohlsearch<CR>
+
+  " Line Bubbling  {
     vmap K [egv
     vmap J ]egv
   " }
 
-  cmap w!! w !sudo tee % >/dev/null
-  
-  " VimCasts mappings, to be assesed. {
-    cnoremap %% <C-R>=expand('%:h').'/'<cr>
-    map <leader>ew :e %%
-    map <leader>es :sp %%
-    map <leader>ev :vsp %%
-    map <leader>et :tabe %%
+  " Indentation {
+    vnoremap H <gv
+    vnoremap L >gv
+  " }
+" }
+
+" Commands {
+  command! -range Reverse <line1>,<line2>!tail -r
+  command! Vimrc e ~/.vimrc
+
+  " Vimrc reloading {
+    augroup reload_vimrc
+      autocmd!
+      autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    augroup END
   " }
 " }
