@@ -32,6 +32,7 @@
   " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
   Bundle 'matchit.zip'
   Bundle 'kien/ctrlp.vim'
+  Bundle 'chriskempson/base16-vim'
 " }
 
 " General {
@@ -74,9 +75,10 @@
   set showcmd
   set showmatch
   
-  set background=dark
-  let g:solarized_contrast="high"
-  colorscheme solarized
+  " set background=dark
+  " let g:solarized_contrast="high"
+  " colorscheme solarized
+  colorscheme base16-eighties
 
   " GUI {
     if has("gui_running")
@@ -89,7 +91,7 @@
   " Powerline {
     set laststatus=2
     let Powerline_symbols="fancy"
-    let Powerline_colorscheme="solarized16"
+    " let Powerline_colorscheme="solarized16"
   " }
   
   " Sparkup {
