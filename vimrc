@@ -1,7 +1,7 @@
 " Basics {
   set nocompatible
   set encoding=utf-8
-  set guifont=Mensch:h16
+  set guifont=Mensch\ for\ Powerline:h16
 " }
 
 " Vundle {
