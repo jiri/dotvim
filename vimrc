@@ -56,6 +56,7 @@
     augroup reload_vimrc
       autocmd!
       autocmd BufWritePost $MYVIMRC source $MYVIMRC
+      autocmd BufWritePost $MYVIMRC AirlineRefresh
     augroup END
   " }
 " }
@@ -86,6 +87,8 @@
 " Plugin specific settings {
   " Airline {
     set laststatus=2
+    set noshowmode
+
     let g:airline#extensions#tabline#enabled=1
     let g:airline_powerline_fonts=1
 
