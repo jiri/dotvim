@@ -1,7 +1,9 @@
 # Ignore all backup and swap files
 .*
 backup/
+!backup/.gitkeep
 tmp/
+!tmp/.gitkeep
 
 # Ignore all the bundled plugins
 bundle/*/

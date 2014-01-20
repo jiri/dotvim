@@ -1,7 +1,7 @@
 " Basics {
   set nocompatible
   set encoding=utf-8
-  set guifont=Mensch\ for\ Powerline:h16
+  set guifont=Meslo\ LG\ M\ for\ Powerline:h16
 " }
 
 " Vundle {
@@ -17,22 +17,20 @@
   Bundle 'tpope/vim-unimpaired'
   Bundle 'tpope/vim-fugitive'
   Bundle 'tpope/vim-markdown'
-  Bundle 'Lokaltog/vim-powerline'
+  Bundle 'kien/rainbow_parentheses.vim'
+  Bundle 'kien/ctrlp.vim'
+  Bundle 'bling/vim-airline'
+  " Bundle 'Lokaltog/vim-powerline'
   Bundle 'Lokaltog/vim-easymotion'
   Bundle 'mattn/webapi-vim'
   Bundle 'mattn/gist-vim'
-  Bundle 'altercation/vim-colors-solarized'
-  Bundle 'stephenmckinney/vim-solarized-powerline'
   Bundle 'surround.vim'
   Bundle 'msanders/snipmate.vim'
   Bundle 'tComment'
   Bundle 'Align'
-  Bundle 'dart-lang/dart-vim-plugin'
   Bundle 'VisIncr'
-  " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-  Bundle 'matchit.zip'
-  Bundle 'kien/ctrlp.vim'
   Bundle 'chriskempson/base16-vim'
+  " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " }
 
 " General {
@@ -47,23 +45,35 @@
   set hidden
 " }
 
-" Formatting {
-  filetype plugin indent on
-  syntax on
-  set smartindent
-  set nowrap
+" Filetypes {
 
-  " Indentation {
+  au BufNewFile,BufRead *.tsv set filetype=tsv
+
+  " Formatting {
+    syntax on
+    set nowrap
+
+    filetype plugin indent on
+    set smartindent
     set ts=2 sts=2 sw=2 expandtab
 
-    autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab
-    autocmd FileType css  setlocal ts=4 sts=4 sw=4 expandtab
-    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType tsv setlocal ts=16 sts=16 sw=16 noexpandtab
+    " autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab
+    " autocmd FileType css  setlocal ts=4 sts=4 sw=4 expandtab
+    " autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  " }
+
+  " Vimrc reloading {
+    augroup reload_vimrc
+      autocmd!
+      autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    augroup END
   " }
 " }
 
 " Search {
   set incsearch
+  set ignorecase
   set smartcase
   set hlsearch
 " }
@@ -89,9 +99,51 @@
 
 " Plugin specific settings {
   " Powerline {
-    set laststatus=2
-    let Powerline_symbols="fancy"
+    " set laststatus=2
+    " let Powerline_symbols="fancy"
     " let Powerline_colorscheme="solarized16"
+  " }
+
+  " Airline {
+    set laststatus=2
+    let g:airline#extensions#tabline#enabled=1
+    let g:airline_powerline_fonts=1
+    
+    " if !exists('g:airline_symbols')
+    "   let g:airline_symbols = {}
+    " endif
+
+    " " unicode symbols
+    " let g:airline_left_sep = '»'
+    " let g:airline_left_sep = '▶'
+    " let g:airline_right_sep = '«'
+    " let g:airline_right_sep = '◀'
+    " let g:airline_symbols.linenr = '␊'
+    " let g:airline_symbols.linenr = '␤'
+    " let g:airline_symbols.linenr = '¶'
+    " let g:airline_symbols.branch = '⎇'
+    " let g:airline_symbols.paste = 'ρ'
+    " let g:airline_symbols.paste = 'Þ'
+    " let g:airline_symbols.paste = '∥'
+    " let g:airline_symbols.whitespace = 'Ξ'
+
+    " " powerline symbols
+    " let g:airline_left_sep = ''
+    " let g:airline_left_alt_sep = ''
+    " let g:airline_right_sep = ''
+    " let g:airline_right_alt_sep = ''
+    " let g:airline_symbols.branch = ''
+    " let g:airline_symbols.readonly = ''
+    " let g:airline_symbols.linenr = ''
+
+    " " old vim-powerline symbols
+    " let g:airline_left_sep = '⮀'
+    " let g:airline_left_alt_sep = '⮁'
+    " let g:airline_right_sep = '⮂'
+    " let g:airline_right_alt_sep = '⮃'
+    " let g:airline_symbols.branch = '⭠'
+    " let g:airline_symbols.readonly = '⭤'
+    " let g:airline_symbols.linenr = '⭡'
   " }
   
   " Sparkup {
@@ -109,6 +161,8 @@
 
   nnoremap <leader>; q:
   vnoremap <leader>; q:
+
+  vnoremap <leader>= :Align =<CR>
 
   nnoremap <leader>c :TComment<CR>
   vnoremap <leader>c :TComment<CR>
@@ -133,11 +187,4 @@
 " Commands {
   command! -range Reverse <line1>,<line2>!tail -r
   command! Vimrc e ~/.vimrc
-
-  " Vimrc reloading {
-    augroup reload_vimrc
-      autocmd!
-      autocmd BufWritePost $MYVIMRC source $MYVIMRC
-    augroup END
-  " }
 " }
