@@ -20,7 +20,6 @@
   Bundle 'kien/rainbow_parentheses.vim'
   Bundle 'kien/ctrlp.vim'
   Bundle 'bling/vim-airline'
-  " Bundle 'Lokaltog/vim-powerline'
   Bundle 'Lokaltog/vim-easymotion'
   Bundle 'mattn/webapi-vim'
   Bundle 'mattn/gist-vim'
@@ -45,23 +44,15 @@
   set hidden
 " }
 
-" Filetypes {
+" Filetypes & Formatting {
+  syntax on
+  set nowrap
 
-  au BufNewFile,BufRead *.tsv set filetype=tsv
+  filetype plugin indent on
+  set smartindent
+  set ts=2 sts=2 sw=2 expandtab
 
-  " Formatting {
-    syntax on
-    set nowrap
-
-    filetype plugin indent on
-    set smartindent
-    set ts=2 sts=2 sw=2 expandtab
-
-    autocmd FileType tsv setlocal ts=16 sts=16 sw=16 noexpandtab
-    " autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab
-    " autocmd FileType css  setlocal ts=4 sts=4 sw=4 expandtab
-    " autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-  " }
+  " autocmd FileType tsv setlocal ts=16 sts=16 sw=16 noexpandtab
 
   " Vimrc reloading {
     augroup reload_vimrc
