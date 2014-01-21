@@ -65,7 +65,7 @@
   set incsearch
   set ignorecase
   set smartcase
-  set hlsearch
+  set nohlsearch
 " }
 
 " UI {
@@ -105,23 +105,19 @@
   let mapleader=" "
 
   nnoremap Q <nop>
-
-  nnoremap ; :
-  vnoremap ; :
-
   nnoremap <leader>; q:
   vnoremap <leader>; q:
 
+  noremap ; :
+
   vnoremap <leader>= :Align =<CR>
 
-  nnoremap <leader>c :TComment<CR>
-  vnoremap <leader>c :TComment<CR>
-  nnoremap <leader>w :w<CR>
+  noremap <leader>c :TComment<CR>
 
   nnoremap <leader>p :CtrlP<CR>
   nnoremap <leader>b :CtrlPBuffer<CR>
   
-  nnoremap <silent> <Leader>/ :nohlsearch<CR>
+  nnoremap <silent> <Leader>/ :set invhlsearch<CR>
 
   " Line Bubbling  {
     vmap K [egv
