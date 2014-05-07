@@ -30,6 +30,7 @@
   Bundle 'VisIncr'
   Bundle 'chriskempson/base16-vim'
   " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+  Bundle 'sophacles/vim-processing'
 " }
 
 " General {
