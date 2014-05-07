@@ -17,7 +17,6 @@
   Bundle 'tpope/vim-unimpaired'
   Bundle 'tpope/vim-fugitive'
   Bundle 'tpope/vim-markdown'
-  Bundle 'kien/rainbow_parentheses.vim'
   Bundle 'kien/ctrlp.vim'
   Bundle 'bling/vim-airline'
   Bundle 'Lokaltog/vim-easymotion'
@@ -29,7 +28,6 @@
   Bundle 'Align'
   Bundle 'VisIncr'
   Bundle 'chriskempson/base16-vim'
-  " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
   Bundle 'sophacles/vim-processing'
 " }
 
@@ -96,10 +94,6 @@
     let g:airline#extensions#tabline#left_sep = ' '
     let g:airline#extensions#tabline#left_alt_sep = '|'
   " }
-  
-  " Sparkup {
-    " let g:sparkupExecuteMapping="<leader>e"
-  " }
 " }
 
 " Keymappings {
@@ -120,12 +114,10 @@
   
   nnoremap <silent> <Leader>/ :set invhlsearch<CR>
 
-  " Line Bubbling  {
+  " Line bubbling & Indentation {
     vmap K [egv
     vmap J ]egv
-  " }
 
-  " Indentation {
     vnoremap H <gv
     vnoremap L >gv
   " }
