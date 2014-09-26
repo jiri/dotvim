@@ -13,30 +13,37 @@
   Bundle 'L9'
   Bundle 'gmarik/vundle'
   Bundle 'tpope/vim-endwise'
-  Bundle 'tpope/vim-speeddating'
   Bundle 'tpope/vim-unimpaired'
-  Bundle 'tpope/vim-fugitive'
   Bundle 'tpope/vim-markdown'
   Bundle 'kien/ctrlp.vim'
   Bundle 'bling/vim-airline'
-  Bundle 'Lokaltog/vim-easymotion'
-  Bundle 'mattn/webapi-vim'
-  Bundle 'mattn/gist-vim'
-  Bundle 'surround.vim'
   Bundle 'msanders/snipmate.vim'
   Bundle 'tComment'
   Bundle 'Align'
   Bundle 'VisIncr'
   Bundle 'chriskempson/base16-vim'
-  Bundle 'sophacles/vim-processing'
+
+  " To review {
+    Bundle 'tpope/vim-speeddating'
+    Bundle 'tpope/vim-fugitive'
+    Bundle 'Lokaltog/vim-easymotion'
+    Bundle 'mattn/webapi-vim'
+    Bundle 'mattn/gist-vim'
+    Bundle 'surround.vim'
+    Bundle 'sophacles/vim-processing'
+  " }
 " }
 
 " General {
   set backspace=indent,eol,start
-  set backup
-  set backupdir=~/.vim/backup
-  set directory=~/.vim/tmp
-  set fileformats=unix,dos,mac
+
+  set nobackup
+  set noswapfile
+  " set backup
+  " set backupdir=~/.vim/backup
+  " set directory=~/.vim/tmp
+
+  set fileformats=mac,unix,dos
   set iskeyword+=_,$,%,@,#
   set noerrorbells
   set autoread
@@ -78,7 +85,7 @@
 
   " GUI {
     if has("gui_running")
-      set guioptions=ce
+      set guioptions=c
     endif
   " }
 " }
