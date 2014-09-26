@@ -43,6 +43,14 @@
   " set backupdir=~/.vim/backup
   " set directory=~/.vim/tmp
 
+  " Persistent undo {
+    if has("persistent_undo")
+      silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+      set undodir=~/.vim/undo
+      set undofile
+    endif
+  " }
+
   set fileformats=mac,unix,dos
   set iskeyword+=_,$,%,@,#
   set noerrorbells
@@ -64,6 +72,10 @@
       autocmd BufWritePost $MYVIMRC source $MYVIMRC
       autocmd BufWritePost $MYVIMRC AirlineRefresh
     augroup END
+  " }
+
+  " Help key for vim files {
+    autocmd FileType vim setlocal keywordprg=:help
   " }
 " }
 
