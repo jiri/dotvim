@@ -51,7 +51,7 @@
     endif
   " }
 
-  set fileformats=mac,unix,dos
+  set fileformats=unix,dos
   set iskeyword+=_,$,%,@,#
   set noerrorbells
   set autoread
