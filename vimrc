@@ -5,33 +5,38 @@
 " }
 
 " Vundle {
-  set rtp+=~/.vim/bundle/vundle
-  call vundle#rc()
-" }
-
-" Bundled plugins {
-  Bundle 'L9'
-  Bundle 'gmarik/vundle'
-  Bundle 'tpope/vim-endwise'
-  Bundle 'tpope/vim-unimpaired'
-  Bundle 'tpope/vim-markdown'
-  Bundle 'kien/ctrlp.vim'
-  Bundle 'bling/vim-airline'
-  Bundle 'msanders/snipmate.vim'
-  Bundle 'tComment'
-  Bundle 'Align'
-  Bundle 'VisIncr'
-  Bundle 'chriskempson/base16-vim'
-
-  " To review {
-    Bundle 'tpope/vim-speeddating'
-    Bundle 'tpope/vim-fugitive'
-    Bundle 'Lokaltog/vim-easymotion'
-    Bundle 'mattn/webapi-vim'
-    Bundle 'mattn/gist-vim'
-    Bundle 'surround.vim'
-    Bundle 'sophacles/vim-processing'
+  " Init {
+    filetype off
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
   " }
+
+  " Bundled plugins {
+    " Let Vundle handle itself
+    Plugin 'gmarik/Vundle.vim'
+
+    Plugin 'L9'
+    Plugin 'tpope/vim-endwise'
+    Plugin 'tpope/vim-unimpaired'
+    Plugin 'tpope/vim-markdown'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'bling/vim-airline'
+    Plugin 'msanders/snipmate.vim'
+    Plugin 'tComment'
+    Plugin 'Align'
+    Plugin 'VisIncr'
+    Plugin 'chriskempson/base16-vim'
+    Plugin 'wting/rust.vim'
+
+    " To review {
+      Plugin 'tpope/vim-speeddating'
+      Plugin 'tpope/vim-fugitive'
+      Plugin 'Lokaltog/vim-easymotion'
+      Plugin 'surround.vim'
+    " }
+  " }
+
+  call vundle#end()
 " }
 
 " General {
