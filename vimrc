@@ -19,6 +19,7 @@
     Plugin 'tpope/vim-endwise'
     Plugin 'tpope/vim-unimpaired'
     Plugin 'tpope/vim-markdown'
+    Plugin 'scrooloose/nerdtree'
     Plugin 'kien/ctrlp.vim'
     Plugin 'bling/vim-airline'
     Plugin 'msanders/snipmate.vim'
@@ -107,19 +108,6 @@
   " }
 " }
 
-" Plugin specific settings {
-  " Airline {
-    set laststatus=2
-    set noshowmode
-
-    let g:airline#extensions#tabline#enabled=1
-    let g:airline_powerline_fonts=1
-
-    let g:airline#extensions#tabline#left_sep = ' '
-    let g:airline#extensions#tabline#left_alt_sep = '|'
-  " }
-" }
-
 " Keymappings {
   let mapleader=" "
 
@@ -144,6 +132,23 @@
 
     vnoremap H <gv
     vnoremap L >gv
+  " }
+" }
+
+" Plugin specific settings {
+  " NERDTree {
+    nmap <leader><CR> :NERDTreeToggle<CR>
+  " }
+
+  " Airline {
+    set laststatus=2
+    set noshowmode
+
+    let g:airline#extensions#tabline#enabled=1
+    let g:airline_powerline_fonts=1
+
+    let g:airline#extensions#tabline#left_sep = ' '
+    let g:airline#extensions#tabline#left_alt_sep = '|'
   " }
 " }
 
