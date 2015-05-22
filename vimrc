@@ -41,10 +41,25 @@
     Plugin 'scrooloose/nerdtree'
     Plugin 'kien/ctrlp.vim'
     Plugin 'bling/vim-airline'
-    Plugin 'Align'
+    Plugin 'godlygeek/tabular'
     Plugin 'VisIncr'
     Plugin 'chriskempson/base16-vim'
     Plugin 'tpope/vim-surround'
+
+    Plugin 'AnsiEsc.vim'
+
+    " Completion and snippets {
+      Plugin 'Shougo/neocomplete.vim'
+      Plugin 'Shougo/neosnippet'
+      Plugin 'Shougo/neosnippet-snippets'
+    " }
+
+    " Haskell {
+      Plugin 'dag/vim2hs'
+      " Plugin 'lukerandall/haskellmode-vim'
+      Plugin 'eagletmt/ghcmod-vim'
+      Plugin 'eagletmt/neco-ghc'
+    " }
 
     " Console {
       Plugin 'Shougo/vimproc'
@@ -61,16 +76,10 @@
       Plugin 'junegunn/limelight.vim'
     " }
 
-    " Completion and snippets {
-      Plugin 'Shougo/neocomplete.vim'
-      Plugin 'Shougo/neosnippet'
-      Plugin 'Shougo/neosnippet-snippets'
-    " }
-
     " Lisp { 
       Plugin 'guns/vim-sexp'
       Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-      Plugin 'amdt/vim-niji'
+      Plugin 'vim-niji'
       Plugin 'wlangstroth/vim-racket'
     " }
   " }
@@ -79,6 +88,15 @@
 " }
 
 " Plugin specific settings {
+  " Haskellmode {
+    let g:haskell_quasi = 0
+
+    let $PATH = $PATH . ':' . expand("~/Library/Haskell/bin") 
+    let g:haddock_browser = "open"
+
+    au BufEnter *.hs compiler hlint
+  " }
+
   " TODO: Elaborate
   " NeoComplete {
     let g:acp_enableAtStartup = 0
@@ -188,6 +206,8 @@
   filetype plugin indent on
   set smartindent
   set ts=2 sts=2 sw=2 expandtab
+
+  autocmd FileType rust compiler rustc
 
   " Vimrc {
     augroup reload_vimrc
