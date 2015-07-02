@@ -3,6 +3,11 @@
   set encoding=utf-8
   set guifont=Input:h16
 
+  " Size {
+    set lines=24
+    set columns=80
+  " }
+
   " Keymappings {
     noremap ; :
     let mapleader=" "
@@ -37,16 +42,12 @@
     Plugin 'tpope/vim-unimpaired'
     Plugin 'tpope/vim-markdown'
     Plugin 'tpope/vim-commentary'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'scrooloose/nerdtree'
     Plugin 'kien/ctrlp.vim'
     Plugin 'bling/vim-airline'
     Plugin 'godlygeek/tabular'
     Plugin 'VisIncr'
     Plugin 'chriskempson/base16-vim'
     Plugin 'tpope/vim-surround'
-
-    Plugin 'AnsiEsc.vim'
 
     " Completion and snippets {
       Plugin 'Shougo/neocomplete.vim'
@@ -63,7 +64,6 @@
 
     " Console {
       Plugin 'Shougo/vimproc'
-      Plugin 'Shougo/vimshell.vim'
     " }
 
     " Rust {
@@ -75,12 +75,9 @@
       Plugin 'sindriava/goyo.vim'
       Plugin 'junegunn/limelight.vim'
     " }
-
-    " Lisp { 
-      Plugin 'guns/vim-sexp'
-      Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-      Plugin 'vim-niji'
-      Plugin 'wlangstroth/vim-racket'
+    
+    " Other {
+      Plugin 'majutsushi/tagbar'
     " }
   " }
 
@@ -128,17 +125,6 @@
     " endif
   " }
 
-  " TODO: Elaborate
-  " VimShell {
-    noremap <silent> ` :VimShell<CR>
-
-    let g:vimshell_prompt_expr = '"λ ".escape(fnamemodify(getcwd(), ":~:h"), "\\[]()?! ")." "'
-		let g:vimshell_prompt_pattern = '^λ \%(\f\|\\.\)\+ '
-
-    let g:vimshell_disable_escape_highlight = 1
-    let g:vimshell_cat_command = "less"
-  " }
-
   " Niji {
     let g:niji_matching_filetypes = ['lisp', 'racket', 'clojure']
   " }
@@ -172,6 +158,44 @@
 
     let g:goyo_margin_top = 0
     let g:goyo_margin_bottom = 0
+  " }
+  
+  " Tagbar {
+    nnoremap <leader>= :TagbarToggle<CR>
+
+    let g:tagbar_autofocus = 1
+    let g:tagbar_autoclose = 1
+    let g:tagbar_type_haskell = {
+      \ 'ctagsbin'  : 'hasktags',
+      \ 'ctagsargs' : '-x -c -o-',
+      \ 'kinds'     : [
+          \  'm:modules:0:1',
+          \  'd:data: 0:1',
+          \  'd_gadt: data gadt:0:1',
+          \  't:type names:0:1',
+          \  'nt:new types:0:1',
+          \  'c:classes:0:1',
+          \  'cons:constructors:1:1',
+          \  'c_gadt:constructor gadt:1:1',
+          \  'c_a:constructor accessors:1:1',
+          \  'ft:function types:1:1',
+          \  'fi:function implementations:0:1',
+          \  'o:others:0:1'
+      \ ],
+      \ 'sro'        : '.',
+      \ 'kind2scope' : {
+          \ 'm' : 'module',
+          \ 'c' : 'class',
+          \ 'd' : 'data',
+          \ 't' : 'type'
+      \ },
+      \ 'scope2kind' : {
+          \ 'module' : 'm',
+          \ 'class'  : 'c',
+          \ 'data'   : 'd',
+          \ 'type'   : 't'
+      \ }
+    \ }
   " }
 " }
 
@@ -219,6 +243,10 @@
     " Help key {
       autocmd FileType vim setlocal keywordprg=:help
     " }
+  " }
+
+  " Haskell {
+    autocmd FileType haskell command! Hoogle !~/Library/Haskell/bin/hoogle
   " }
 " }
 
