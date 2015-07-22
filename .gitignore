@@ -8,5 +8,5 @@ undo/*
 # !tmp/.gitkeep
 
 # Ignore all the bundled plugins
-bundle/*/
-!bundle/vundle/
+bundle/*
+!bundle/.gitkeep

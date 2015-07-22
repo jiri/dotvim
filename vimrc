@@ -26,75 +26,72 @@
   " }
 " }
 
-" Vundle {
+" NeoBundle {
   " Init {
-    filetype off
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
+    set rtp+=~/.vim/bundle/neobundle.vim
+    call neobundle#begin(expand('~/.vim/bundle/'))
   " }
 
   " Bundled plugins {
-    " Let Vundle handle itself
-    Plugin 'gmarik/Vundle.vim'
+    " Let NeoBundle handle itself
+    NeoBundle 'Shougo/neobundle.vim'
+    NeoBundle 'Shougo/vimproc'
 
-    Plugin 'L9'
-    Plugin 'tpope/vim-endwise'
-    Plugin 'tpope/vim-unimpaired'
-    Plugin 'tpope/vim-markdown'
-    Plugin 'tpope/vim-commentary'
-    Plugin 'kien/ctrlp.vim'
-    Plugin 'bling/vim-airline'
-    Plugin 'godlygeek/tabular'
-    Plugin 'VisIncr'
-    Plugin 'chriskempson/base16-vim'
-    Plugin 'tpope/vim-surround'
+    " NeoBundle 'L9'
+    " NeoBundle 'tpope/vim-endwise'
+    NeoBundle 'tpope/vim-unimpaired'
+    NeoBundle 'tpope/vim-markdown'
+    NeoBundle 'tpope/vim-commentary'
+    " NeoBundle 'kien/ctrlp.vim'
+    NeoBundle 'bling/vim-airline'
+    " NeoBundle 'godlygeek/tabular'
+    NeoBundle 'VisIncr'
+    NeoBundle 'chriskempson/base16-vim'
+    " NeoBundle 'tpope/vim-surround'
 
     " Completion and snippets {
-      Plugin 'Shougo/neocomplete.vim'
-      Plugin 'Shougo/neosnippet'
-      Plugin 'Shougo/neosnippet-snippets'
+      NeoBundle 'Shougo/neocomplete.vim'
+      NeoBundle 'Shougo/neosnippet'
+      NeoBundle 'Shougo/neosnippet-snippets'
     " }
 
     " Haskell {
-      Plugin 'dag/vim2hs'
-      " Plugin 'lukerandall/haskellmode-vim'
-      Plugin 'eagletmt/ghcmod-vim'
-      Plugin 'eagletmt/neco-ghc'
+      NeoBundle 'dag/vim2hs'
+      " NeoBundle 'lukerandall/haskellmode-vim'
+      NeoBundle 'eagletmt/ghcmod-vim'
+      NeoBundle 'eagletmt/neco-ghc'
     " }
 
     " Console {
-      Plugin 'Shougo/vimproc'
     " }
 
     " Rust {
-      Plugin 'rust-lang/rust.vim'
-      Plugin 'cespare/vim-toml'
+      " NeoBundle 'rust-lang/rust.vim'
+      " NeoBundle 'cespare/vim-toml'
     " }
 
     " Zen mode {
-      Plugin 'sindriava/goyo.vim'
-      Plugin 'junegunn/limelight.vim'
+      NeoBundle 'sindriava/goyo.vim'
+      NeoBundle 'junegunn/limelight.vim'
     " }
     
-    " Other {
-      Plugin 'majutsushi/tagbar'
+    " Check for uninstalled plugins {
+      NeoBundleCheck
     " }
   " }
 
-  call vundle#end()
+  call neobundle#end()
 " }
 
 " Plugin specific settings {
   " Haskellmode {
-    let g:haskell_quasi = 0
+    let g:haddock_browser = "open"
     let g:hpaste_author = 'Sindriava'
 
-    let $PATH = $PATH . ':' . expand("~/.cabal/bin") 
-    let g:haddock_browser = "open"
-
     nnoremap <leader>t :GhcModType<CR>
-    nnoremap <leader>it :GhcModTypeInsert<CR>
     nnoremap <leader>T :GhcModTypeClear<CR>
+    " This is broken for now.
+    " nnoremap <leader>it :GhcModTypeInsert<CR>
 
     au BufEnter *.hs compiler hlint
   " }
@@ -151,7 +148,7 @@
     set laststatus=2
     set noshowmode
 
-    let g:airline#extensions#tabline#enabled = 1
+    " let g:airline#extensions#tabline#enabled = 1
     let g:airline_powerline_fonts = 1
 
     let g:airline#extensions#tabline#left_sep = ' '
