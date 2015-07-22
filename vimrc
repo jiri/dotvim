@@ -87,9 +87,14 @@
 " Plugin specific settings {
   " Haskellmode {
     let g:haskell_quasi = 0
+    let g:hpaste_author = 'Sindriava'
 
-    let $PATH = $PATH . ':' . expand("~/Library/Haskell/bin") 
+    let $PATH = $PATH . ':' . expand("~/.cabal/bin") 
     let g:haddock_browser = "open"
+
+    nnoremap <leader>t :GhcModType<CR>
+    nnoremap <leader>it :GhcModTypeInsert<CR>
+    nnoremap <leader>T :GhcModTypeClear<CR>
 
     au BufEnter *.hs compiler hlint
   " }
