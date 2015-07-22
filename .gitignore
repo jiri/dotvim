@@ -10,3 +10,4 @@ undo/*
 # Ignore all the bundled plugins
 bundle/*
 !bundle/.gitkeep
+!bundle/neobundle.vim
