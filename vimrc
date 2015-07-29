@@ -9,12 +9,13 @@
   " }
 
   " Keymappings {
-    noremap ; :
     let mapleader=" "
-
+    noremap ; :
     nnoremap Q <nop>
-    nnoremap <leader>; q:
-    vnoremap <leader>; q:
+
+    " Visual mode {
+      " vnoremap <silent> / :exe "normal /" <CR>
+    " }
 
     " Line bubbling & Indentation {
       vmap K [egv
@@ -44,10 +45,11 @@
     NeoBundle 'tpope/vim-commentary'
     " NeoBundle 'kien/ctrlp.vim'
     NeoBundle 'bling/vim-airline'
-    " NeoBundle 'godlygeek/tabular'
+    NeoBundle 'godlygeek/tabular'
     NeoBundle 'VisIncr'
     NeoBundle 'chriskempson/base16-vim'
     " NeoBundle 'tpope/vim-surround'
+    NeoBundle 'sindriava/goyo.vim'
 
     " Completion and snippets {
       NeoBundle 'Shougo/neocomplete.vim'
@@ -60,19 +62,6 @@
       " NeoBundle 'lukerandall/haskellmode-vim'
       NeoBundle 'eagletmt/ghcmod-vim'
       NeoBundle 'eagletmt/neco-ghc'
-    " }
-
-    " Console {
-    " }
-
-    " Rust {
-      " NeoBundle 'rust-lang/rust.vim'
-      " NeoBundle 'cespare/vim-toml'
-    " }
-
-    " Zen mode {
-      NeoBundle 'sindriava/goyo.vim'
-      NeoBundle 'junegunn/limelight.vim'
     " }
     
     " Check for uninstalled plugins {
@@ -90,8 +79,6 @@
 
     nnoremap <leader>t :GhcModType<CR>
     nnoremap <leader>T :GhcModTypeClear<CR>
-    " This is broken for now.
-    " nnoremap <leader>it :GhcModTypeInsert<CR>
 
     au BufEnter *.hs compiler hlint
   " }
@@ -148,56 +135,18 @@
     set laststatus=2
     set noshowmode
 
-    " let g:airline#extensions#tabline#enabled = 1
     let g:airline_powerline_fonts = 1
 
-    let g:airline#extensions#tabline#left_sep = ' '
-    let g:airline#extensions#tabline#left_alt_sep = '|'
+    " let g:airline#extensions#tabline#enabled = 1
+    " let g:airline#extensions#tabline#left_sep = ' '
+    " let g:airline#extensions#tabline#left_alt_sep = '|'
   " }
 
   " Goyo {
     nnoremap <silent> § :Goyo<CR>
 
-    let g:goyo_margin_top = 0
-    let g:goyo_margin_bottom = 0
-  " }
-  
-  " Tagbar {
-    nnoremap <leader>= :TagbarToggle<CR>
-
-    let g:tagbar_autofocus = 1
-    let g:tagbar_autoclose = 1
-    let g:tagbar_type_haskell = {
-      \ 'ctagsbin'  : 'hasktags',
-      \ 'ctagsargs' : '-x -c -o-',
-      \ 'kinds'     : [
-          \  'm:modules:0:1',
-          \  'd:data: 0:1',
-          \  'd_gadt: data gadt:0:1',
-          \  't:type names:0:1',
-          \  'nt:new types:0:1',
-          \  'c:classes:0:1',
-          \  'cons:constructors:1:1',
-          \  'c_gadt:constructor gadt:1:1',
-          \  'c_a:constructor accessors:1:1',
-          \  'ft:function types:1:1',
-          \  'fi:function implementations:0:1',
-          \  'o:others:0:1'
-      \ ],
-      \ 'sro'        : '.',
-      \ 'kind2scope' : {
-          \ 'm' : 'module',
-          \ 'c' : 'class',
-          \ 'd' : 'data',
-          \ 't' : 'type'
-      \ },
-      \ 'scope2kind' : {
-          \ 'module' : 'm',
-          \ 'class'  : 'c',
-          \ 'data'   : 'd',
-          \ 'type'   : 't'
-      \ }
-    \ }
+    " let g:goyo_margin_top = 0
+    " let g:goyo_margin_bottom = 0
   " }
 " }
 
@@ -232,8 +181,6 @@
   filetype plugin indent on
   set smartindent
   set ts=2 sts=2 sw=2 expandtab
-
-  autocmd FileType rust compiler rustc
 
   " Vimrc {
     augroup reload_vimrc
@@ -279,6 +226,4 @@
 " Commands {
   command! -range Reverse <line1>,<line2>!tail -r
   command! Vimrc e ~/.vimrc
-
-  command! MakeExecutable silent !chmod +x %
 " }
