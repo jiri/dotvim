@@ -1,7 +1,6 @@
 " Basics {
   set nocompatible
   set encoding=utf-8
-  set guifont=Input:h16
 
   " Size {
     set lines=24
@@ -13,9 +12,7 @@
     noremap ; :
     nnoremap Q <nop>
 
-    " Visual mode {
-      " vnoremap <silent> / :exe "normal /" <CR>
-    " }
+    " TODO: Search visual mode selection
 
     " Line bubbling & Indentation {
       vmap K [egv
@@ -34,22 +31,23 @@
   " }
 
   " Bundled plugins {
-    " Let NeoBundle handle itself
-    NeoBundle 'Shougo/neobundle.vim'
-    NeoBundle 'Shougo/vimproc'
+    " Let NeoBundle handle itself {
+      NeoBundle 'Shougo/vimproc'
+      NeoBundle 'Shougo/neobundle.vim'
+    " }
 
-    " NeoBundle 'L9'
-    " NeoBundle 'tpope/vim-endwise'
     NeoBundle 'tpope/vim-unimpaired'
     NeoBundle 'tpope/vim-markdown'
     NeoBundle 'tpope/vim-commentary'
-    " NeoBundle 'kien/ctrlp.vim'
     NeoBundle 'bling/vim-airline'
     NeoBundle 'godlygeek/tabular'
     NeoBundle 'VisIncr'
-    NeoBundle 'chriskempson/base16-vim'
-    " NeoBundle 'tpope/vim-surround'
     NeoBundle 'sindriava/goyo.vim'
+    
+    " Colorschemes & syntax {
+      NeoBundle 'chriskempson/base16-vim'
+      NeoBundle 'beyondmarc/glsl.vim'
+    " }
 
     " Completion and snippets {
       NeoBundle 'Shougo/neocomplete.vim'
@@ -59,14 +57,18 @@
 
     " Haskell {
       NeoBundle 'dag/vim2hs'
-      " NeoBundle 'lukerandall/haskellmode-vim'
       NeoBundle 'eagletmt/ghcmod-vim'
       NeoBundle 'eagletmt/neco-ghc'
     " }
-    
-    " Check for uninstalled plugins {
-      NeoBundleCheck
+
+    " Unused {
+    "   NeoBundle 'L9'
+    "   NeoBundle 'tpope/vim-endwise'
+    "   NeoBundle 'kien/ctrlp.vim'
+    "   NeoBundle 'tpope/vim-surround'
     " }
+    
+    NeoBundleCheck " Check for uninstalled plugins
   " }
 
   call neobundle#end()
@@ -76,6 +78,8 @@
   " Haskellmode {
     let g:haddock_browser = "open"
     let g:hpaste_author = 'Sindriava'
+
+    let g:haskell_multiline_strings = 0
 
     nnoremap <leader>t :GhcModType<CR>
     nnoremap <leader>T :GhcModTypeClear<CR>
@@ -114,19 +118,6 @@
     " endif
   " }
 
-  " Niji {
-    let g:niji_matching_filetypes = ['lisp', 'racket', 'clojure']
-  " }
-
-  " NERDTree {
-    nmap <leader><CR> :NERDTreeToggle<CR>
-  " }
-
-  " CtrlP {
-    nnoremap <leader>p :CtrlP<CR>
-    nnoremap <leader>b :CtrlPBuffer<CR>
-  " }
-
   " Commentary {
     noremap <leader>c :Commentary<CR>
   " }
@@ -137,27 +128,34 @@
 
     let g:airline_powerline_fonts = 1
 
-    " let g:airline#extensions#tabline#enabled = 1
-    " let g:airline#extensions#tabline#left_sep = ' '
-    " let g:airline#extensions#tabline#left_alt_sep = '|'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#left_sep = ' '
+    let g:airline#extensions#tabline#left_alt_sep = '|'
   " }
 
   " Goyo {
     nnoremap <silent> § :Goyo<CR>
-
-    " let g:goyo_margin_top = 0
-    " let g:goyo_margin_bottom = 0
   " }
 " }
 
+
 " General {
   set backspace=indent,eol,start
+  set fileformats=unix,dos
+  set iskeyword+=$,%,@,#
 
-  set nobackup
-  set noswapfile
-  " set backup
-  " set backupdir=~/.vim/backup
-  " set directory=~/.vim/tmp
+  set autoread
+  set hidden
+
+  " Backups {
+    set nobackup
+    set noswapfile
+  " }
+  
+  " Disable beeping {
+    set noerrorbells
+    set vb t_vb=  
+  " }
 
   " Persistent undo {
     if has("persistent_undo")
@@ -166,21 +164,17 @@
       set undofile
     endif
   " }
-
-  set fileformats=unix,dos
-  set iskeyword+=$,%,@,#
-  set noerrorbells
-  set autoread
-  set hidden
 " }
 
 " Filetypes & Formatting {
   syntax on
   set nowrap
 
-  filetype plugin indent on
-  set smartindent
-  set ts=2 sts=2 sw=2 expandtab
+  " Indentation {
+    filetype plugin indent on
+    set smartindent
+    set ts=2 sts=2 sw=2 expandtab
+  " }
 
   " Vimrc {
     augroup reload_vimrc
@@ -193,26 +187,21 @@
       autocmd FileType vim setlocal keywordprg=:help
     " }
   " }
-
-  " Haskell {
-    autocmd FileType haskell command! Hoogle !~/Library/Haskell/bin/hoogle
-  " }
 " }
 
 " Search {
   set incsearch
-  set ignorecase " NOTE: Unnecessary?
   set smartcase
   set nohlsearch
 " }
 
 " UI {
   set number
-  set ruler
   set scrolloff=5
   set showcmd
   set showmatch
   
+  set guifont=Input:h16
   colorscheme base16-eighties
   set background=dark
 
@@ -224,6 +213,5 @@
 " }
 
 " Commands {
-  command! -range Reverse <line1>,<line2>!tail -r
   command! Vimrc e ~/.vimrc
 " }
