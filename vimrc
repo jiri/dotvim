@@ -43,6 +43,7 @@
     NeoBundle 'godlygeek/tabular'
     NeoBundle 'VisIncr'
     NeoBundle 'sindriava/goyo.vim'
+    NeoBundle 'dag/vim-fish'
     
     " Colorschemes & syntax {
       NeoBundle 'chriskempson/base16-vim'
@@ -85,6 +86,9 @@
     nnoremap <leader>T :GhcModTypeClear<CR>
 
     au BufEnter *.hs compiler hlint
+
+    " Add cabal executables to PATH
+    let $PATH .= ':' . "~/.cabal/bin"
   " }
 
   " TODO: Elaborate
@@ -116,6 +120,10 @@
     " if has('conceal')
     "   set conceallevel=2 concealcursor=i
     " endif
+  " }
+
+  " Markdown {
+    autocmd FileType markdown nnoremap <buffer> <leader>p :silent ! open -a "Marked 2" % &<CR>
   " }
 
   " Commentary {
